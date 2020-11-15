@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+  selected: 'dashboard' | 'import';
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -22,6 +23,7 @@ export const Container = styled.div<ContainerProps>`
         text-decoration: none;
         font-size: 16px;
         transition: opacity 0.2s;
+        padding-bottom: 10px;
 
         & + a {
           margin-left: 32px;
@@ -29,6 +31,16 @@ export const Container = styled.div<ContainerProps>`
 
         &:hover {
           opacity: 0.6;
+        }
+
+        &:first-child {
+          border-bottom: ${({ selected }) =>
+            selected === 'dashboard' && '2px solid #ff872c'};
+        }
+
+        &:last-child {
+          border-bottom: ${({ selected }) =>
+            selected === 'import' && '2px solid #ff872c'};
         }
       }
     }
